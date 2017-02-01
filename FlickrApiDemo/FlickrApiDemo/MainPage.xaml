@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlickrApiDemo.MainPage"
+             Title="Flickr Api">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    
+    <SearchBar x:Name="SearchBar" Grid.Row="0" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Source={x:Reference SearchBar}, Path=Text}"/>
+    
+    <ListView x:Name="ListView" Grid.Row="1" HasUnevenRows="True" ItemsSource="{Binding Photos}" ItemAppearing="ListView_OnItemAppearing" CachingStrategy="RecycleElement">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid HeightRequest="200" Margin="5">
+              <Image Source="{Binding Url}" Aspect="AspectFill"></Image>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    
+    <ActivityIndicator IsRunning="{Binding IsBusy}" Grid.Row="1" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" />
+  </Grid>
+</ContentPage>
