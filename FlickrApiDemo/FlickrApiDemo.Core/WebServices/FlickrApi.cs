@@ -12,7 +12,8 @@ namespace FlickrApiDemo.Core.WebServices
     class FlickrApi
     {
         private const string BaseUrl = "https://api.flickr.com/services/rest/";
-        private const string FlickrApiKey = "ca0441b9f295ae48152bf2dd9aa36a9f";
+        //Add your flicker api key here
+        private const string FlickrApiKey;
 
         public async Task<IEnumerable<Photo>> SearchPhotos(string searchText, int page, int pageSize)
         {
